@@ -221,6 +221,9 @@ struct Mem : RTLIL::AttrObject {
 	// in the same clock domain.
 	void emulate_read_first(FfInitVals *initvals);
 
+	std::vector<SigSpec> generate_demux(int wpidx, int addr_shift, std::vector<int> addr_mux_bits);
+	std::vector<SigSpec> generate_mux(int rpidx, int addr_shift, std::vector<int> addr_mux_bits);
+
 	Mem(Module *module, IdString memid, int width, int start_offset, int size) : module(module), memid(memid), packed(false), mem(nullptr), cell(nullptr), width(width), start_offset(start_offset), size(size) {}
 };
 
